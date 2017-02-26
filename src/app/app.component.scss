@@ -1,0 +1,49 @@
+.preloadData {
+
+  .dialog-buttons {
+    float: right;
+  }
+
+  .search-result {
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    width: 195px;
+    height: 20px;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .dropdown-menu-search {
+    border: medium none;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
+    background-color: #ffffff;
+    width: 87%;
+    float: left;
+    font-size: 12px;
+    left: 15px;
+    list-style: none outside none;
+    padding: 0;
+    position: absolute;
+    text-shadow: none;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .dropdown-menu-search > li > span {
+    border-radius: 3px;
+    color: inherit;
+    line-height: 25px;
+    margin: 4px;
+    text-align: left;
+    font-weight: normal;
+  }
+
+  .dropdown-menu-search > li:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #1ab394;
+    outline: 0;
+  }
+}

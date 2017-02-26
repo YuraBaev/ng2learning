@@ -1,3 +1,83 @@
 <h1>
   {{title}}
 </h1>
+
+<div class="preloadData" *ngIf="preloadData">
+  <h3>Создать новый проект</h3>
+  <hr>
+  <form [formGroup]="createProjForm"
+        (ngSubmit)="submitForm(createProjForm)"
+        novalidate autocomplete="off">
+    <div></div>
+
+    <div class="form-group">
+      <label>Manager</label>
+      <input
+        type="text"
+        name="manager"
+        formControlName="manager"
+        placeholder="Manager"
+        class="form-control"
+        value="{{name}}"
+        (click)="isVisible = true; managers = []">
+
+      <div class="autocomplite-container" *ngIf="isVisible">
+        <ul class="dropdown-menu-search">
+          <li *ngFor="let managerItem of managers" (click)="choseManager(managerItem); isVisible = false">
+            <span>{{managerItem.name}}</span>
+          </li>
+        </ul>
+      </div>
+      <span class="help-block"
+            *ngIf="(createProjForm.get('manager').touched || createProjForm.get('manager').dirty) && createProjForm.get('manager').errors || checkManager">
+                <span *ngIf="createProjForm.get('manager').errors?.required">
+                    Проекту необходим менеджер
+                </span>
+        </span>
+    </div>
+
+    <div class="dialog-buttons">
+      <button type="submit" class="btn btn-w-m btn-success">Submit</button>
+      <button (click)="closeForm()" class="btn btn-outline btn-success">Отмена</button>
+    </div>
+  </form>
+</div>
+
+
+<!--<h1>-->
+<!--{{title}}-->
+<!--</h1>-->
+
+<!--<div class="preloadData" *ngIf="preloadData">-->
+<!--<h3>Создать новый проект</h3>-->
+<!--<hr>-->
+<!--<form-->
+<!--(ngSubmit)="submitForm(createProjForm)"-->
+<!--novalidate autocomplete="off">-->
+<!--<div  ></div>-->
+
+<!--<div class="form-group">-->
+<!--<label>Manager</label>-->
+<!--<input type="text" name="manager" #searchBox (keyup)="search(searchBox.value)" placeholder="Manager" class="form-control" [(ngModel)]="selectedUser.name">-->
+<!--<div>-->
+<!--<ul class="dropdown-menu-search">-->
+<!--<li *ngFor="let managerItem of managers" (click)="choseManager(managerItem)">-->
+<!--<span>{{managerItem.name}}</span>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<span class="help-block"-->
+<!--*ngIf="(createProjForm.get('manager').touched || createProjForm.get('manager').dirty) && createProjForm.get('manager').errors || checkManager">-->
+<!--<span *ngIf="createProjForm.get('manager').errors?.required">-->
+<!--Проекту необходим менеджер-->
+<!--</span>-->
+<!--</span>-->
+<!--</div>-->
+
+<!--<div class="dialog-buttons">-->
+<!--<button type="submit" class="btn btn-w-m btn-success">Submit</button>-->
+<!--<button (click)="closeForm()" class="btn btn-outline btn-success">Отмена</button>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+

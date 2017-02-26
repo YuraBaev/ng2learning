@@ -1,0 +1,34 @@
+{
+  "database": {
+    "errors": false,
+    "data": {
+      "managers": [
+        {
+          "Id": 1,
+          "name": "Musia"
+        },{
+          "Id": 2,
+          "name": "Markiz"
+        },{
+          "Id": 3,
+          "name": "Olia"
+        },{
+          "Id": 4,
+          "name": "Ira"
+        },{
+          "Id": 5,
+          "name": "Markiz"
+        },{
+          "Id": 6,
+          "name": "Kosmich"
+        },{
+          "Id": 7,
+          "name": "Iphone"
+        },{
+          "Id": 8,
+          "name": "Lenovo"
+        }
+      ]
+    }
+  }
+}
