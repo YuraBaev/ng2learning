@@ -5,7 +5,7 @@
   "scripts": {
     "json": "cd mock-data && json-server --watch --host 192.168.0.106 data.json",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 192.168.0.106",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

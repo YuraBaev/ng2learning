@@ -1,11 +1,7 @@
-import { Component, OnInit }                from '@angular/core';
+import {Component, OnInit, ElementRef}                from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AppService}                         from './app.service';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
-// Observable class extensions
 import 'rxjs/add/observable/of';
-// Observable operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -18,31 +14,30 @@ export class UserModel {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  host: {
+    '(document:click)': 'onClick($event)',
+  }
 })
 
 export class AppComponent implements OnInit {
   title = 'app works!';
-  name = '';
-  isVisible = true;
+  managerName = '';
   preloadData;
   createProjForm: FormGroup;
   private checkName = false;
   private checkManager = false;
   private checkStart_at = false;
   private managers = [];
-  private searchTerms = new Subject<string>();
   selectedUser:UserModel;
 
-
   constructor(private XProjectApi: AppService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private _eref: ElementRef) {
     this.createProjForm = fb.group({
       'manager': [null, Validators.required]
     });
-    console.log(this.createProjForm);
     this.createProjForm.valueChanges.subscribe((form: any) => {
-        console.log('form changed to:', form);
         if (form.manager !== null) {
           this.serchName(this.preloadData.managers, form.manager);
         }
@@ -51,17 +46,10 @@ export class AppComponent implements OnInit {
     this.selectedUser = new UserModel;
   }
 
-  search(term: string): void {
-    console.log(term);
-    this.serchName(this.preloadData.managers, term);
-  }
   ngOnInit() {
-
     this.XProjectApi.getPreloadData()
       .subscribe((response) => {
-        console.log(JSON.stringify(response));
         this.preloadData = response;
-        console.log(this.preloadData.managers);
       });
   }
 
@@ -77,22 +65,16 @@ export class AppComponent implements OnInit {
 
       if (value.name) {
         if (value.name.toLowerCase().indexOf(query.toLowerCase()) > -1 && query !== '') {
-          console.log(value.name);
-          console.log(this.managers);
           items.push(value)
         }
       }
     }
     this.managers = items;
-    console.log(this.managers);
   }
 
   choseManager(manager){
     this.createProjForm.value.manager = manager.Id;
-    this.name = manager.name;
-    console.log(this);
-    console.log(manager);
-    console.log(this.createProjForm);
+    this.managerName = manager.name;
   }
 
   submitForm(formGroup: any) {
@@ -113,7 +95,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onClick(event) {
+    if (!this._eref.nativeElement.contains(event.target)) // or some similar check
+      this.managers = [];
+  }
 
   closeForm() {
   }
+
 }

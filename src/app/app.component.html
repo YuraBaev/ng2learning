@@ -1,8 +1,9 @@
+<div (click)="managers = []">
 <h1>
   {{title}}
 </h1>
 
-<div class="preloadData" *ngIf="preloadData">
+<div class="preloadData" *ngIf="preloadData" >
   <h3>Создать новый проект</h3>
   <hr>
   <form [formGroup]="createProjForm"
@@ -18,12 +19,13 @@
         formControlName="manager"
         placeholder="Manager"
         class="form-control"
-        value="{{name}}"
-        (click)="isVisible = true; managers = []">
+        value="{{managerName}}"
+        (click)="managers = []"
+      >
 
-      <div class="autocomplite-container" *ngIf="isVisible">
+      <div class="autocomplite-container">
         <ul class="dropdown-menu-search">
-          <li *ngFor="let managerItem of managers" (click)="choseManager(managerItem); isVisible = false">
+          <li *ngFor="let managerItem of managers" (click)="choseManager(managerItem); managers = []">
             <span>{{managerItem.name}}</span>
           </li>
         </ul>
@@ -35,15 +37,21 @@
                 </span>
         </span>
     </div>
+    <input type="text"
+           placeholder="item..."
+           class="typeahead form-control"
+    />
 
     <div class="dialog-buttons">
       <button type="submit" class="btn btn-w-m btn-success">Submit</button>
       <button (click)="closeForm()" class="btn btn-outline btn-success">Отмена</button>
     </div>
   </form>
+
+
 </div>
 
-
+</div>
 <!--<h1>-->
 <!--{{title}}-->
 <!--</h1>-->
