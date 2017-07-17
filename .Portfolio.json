@@ -1,0 +1,10 @@
+{
+  "name": "ng2learning",
+  "repository": "https://github.com/YuraBaev/angular1",
+  "demo": "http://yurabaev.github.io/angular1/",
+  "logo_background": "javascript_bg.svg",
+  "logo": "javascript_logo.svg",
+  "description": "sdasda asdasdasdas ad ad asd asdadsj naj nadfasdjf",
+  "languages": "angular1",
+  "technology": ["html", "scss", "angular1"]
+}
