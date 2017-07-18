@@ -1,0 +1,9 @@
+{
+  "name": "Angular v2 project for Portfolio",
+  "repository": "https://github.com/YuraBaev/ng2learning",
+  "demo": "http://yurabaev.github.io/ng2learning/",
+  "logo_background": "https://raw.githubusercontent.com/YuraBaev/first-html/master/.portfolio/logo_background.png",
+  "description": "ng2learning ipsum dolor sit amet, consectetur adipisicing nventore minima numquam perspiciatis",
+  "language": "angular",
+  "technology": ["html", "sass", "angular"]
+}
